@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sample 9</title>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="shortcut icon" href="flat-ui/images/favicon.ico">
+        <link rel="stylesheet" href="flat-ui/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="flat-ui/bootstrap/css/bootstrap-responsive.css">
+        <link rel="stylesheet" href="flat-ui/css/flat-ui.css">
+        <!-- Using only with Flat-UI (free)-->
+        <link rel="stylesheet" href="common-files/css/icon-font.css">
+        <!-- end -->
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <!-- header-4 -->
+        <header class="header-4 v-center bg-black">
+            <div class="background">
+                &nbsp;
+            </div>
+            <div>
+                <div class="container">
+                    <div class="row">
+                        <div class="span6">
+                            <div class="hero-unit">
+                                <h1>Own your digital future</h1>
+                                <p>
+                                   The Internet is changing. Join the first global network that puts your privacy first.
+                                </p>
+                            </div>
+                            <div class="btns">
+                                <a class="btn btn-large btn-info" href="#">Claim your username</a>
+                                <a class="btn btn-large btn-gray" href="#">Learn more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- content-20  -->
+        <section class="content-20 v-center">
+            <div>
+                <div class="container">
+                    <div class="row">
+                        <div class="span6">
+                            <h3>The first global network that puts your privacy first. Respect Network.</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span6">
+                          <div id="globe-container" style="height: 400px"></div>
+                        </div>
+  <script type="text/javascript" src="globe/third-party/Detector.js"></script>
+  <script type="text/javascript" src="globe/third-party/three.min.js"></script>
+  <script type="text/javascript" src="globe/third-party/Tween.js"></script>
+  <script type="text/javascript" src="globe/globe.js"></script>
+  <script type="text/javascript">
+    function getRandomInt (min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function initGlobe() {
+      var years = ['1990', '1995', '2000'];
+      var container = document.getElementById('globe-container');
+      var globe = new DAT.Globe(container);
+
+      console.log(globe);
+      var i, tweens = [];
+
+      var settime = function(globe, t) {
+        return function() {
+          new TWEEN.Tween(globe).to({time: t/years.length},1000).easing(TWEEN.Easing.Cubic.EaseOut).start();
+        };
+      };
+      var xhr;
+      TWEEN.start();
+
+      xhr = new XMLHttpRequest();
+      xhr.open('GET', '/globe/population909500.json', true);
+      xhr.onreadystatechange = function(e) {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            window.data = data;
+            for (i=0;i<data.length;i++) {
+              globe.addData(data[i][1], {format: 'magnitude', name: data[i][0], animated: true});
+            }
+            globe.createPoints();
+            settime(globe,0)();
+            globe.animate();
+            document.body.style.backgroundImage = 'none'; // remove loading
+            setInterval(function(){
+              settime(globe, getRandomInt(0, years.length-1))();
+            }, 1000);
+          }
+        }
+      };
+      xhr.send(null);
+    }
+
+    if(!Detector.webgl){
+      Detector.addGetWebGLMessage();
+    } else {
+      setTimeout(initGlobe, 200);
+    }
+  </script>
+<!--
+                        <div class="span6">
+                             <div class="signup-form">
+                                <form class="clearfix">
+                                    <div class="control-group">
+                                        <label>What is your e-mail?</label>
+                                        <input type="text">
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="control-group pull-left">
+                                            <label>Password</label>
+                                            <input type="password">
+                                        </div>
+                                        <div class="control-group pull-right">
+                                            <label>Confirmation</label>
+                                            <input type="password">
+                                        </div>
+                                    </div>
+                                    <div class="control-group site-link">
+                                        <label>Your Site Link</label>
+                                        <input type="text">
+                                        <b>.startup.com</b>
+                                    </div>
+                                    <button class="btn btn-huge">
+                                        Sign Up
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+-->
+                        <div class="span4 offset1 features">
+                            <big>Your health records, your kids' photos, your contacts, your life.</big>
+                            <div class="row">
+                                <div class="span3">
+                                    <h6>Own your data</h6>
+                                    Your data already lives in the corporate cloud. Claim it back and protect it with
+                                    trusted vendors and privacy policies in a personal cloud.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span3">
+                                    <h6>Your personal address</h6>
+                                    Emails change. Phone numbers change. Social networks change.
+                                    It's time for a better way to connect person-to-person.
+                                    Claim your =Name.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- content-3  -->
+        <section class="content-3 v-center">
+            <div>
+                <div class="container">
+                    <div class="row">
+                        <div class="span6 aligment">
+                            <h3>Some more info about Respect Network</h3>
+                            <p>
+                                What is it? BBB for the digital future? Something about your personal cloud
+                                is connected to apps and services that are trusted and protected by technology
+                                and terms of service that put you first. (Not sure what the ticket-> is for. Template stuff.)
+                            </p>
+                        </div>
+                        <div class="span6 img">
+                            <img src="img/ticket-green@2x.png" width="380" height="187" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="delimiter">
+                    &nbsp;
+                </div>
+                <div class="container">
+                    <div class="row features">
+                        <div class="span3">
+                            <h6>Trusted Partners</h6>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+                            </p>
+                        </div>
+                        <div class="span3 offset1">
+                            <h6>Decentralized</h6>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+                            </p>
+                        </div>
+                        <div class="span3 offset1">
+                            <h6>You First</h6>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- content-3  -->
+        <section class="content-3 v-center mirror bg-clouds">
+            <div>
+                <div class="container">
+                    <div class="row">
+                        <div class="span6 aligment">
+                            <h3>More info and graphics and such. WTF is Respect Network really?</h3>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+                            </p>
+                        </div>
+                        <div class="span6 img">
+                            <img width="397" height="193" alt="" src="img/ps-wire-imac@2x.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="delimiter">
+                    &nbsp;
+                </div>
+                <div class="container">
+                    <div class="row features">
+                        <div class="span3">
+                            <h6>More Value Propositions</h6>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+                            </p>
+                        </div>
+                        <div class="span3 offset1">
+                            <h6>Decentralized</h6>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+                            </p>
+                        </div>
+                        <div class="span3 offset1">
+                            <h6>You First</h6>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- price-1 -->
+        <section class="price-1 v-center">
+            <div class="container">
+                <h3 class="text-center">Pick a Personal Cloud Provider</h3>
+                <div class="row plans">
+                    <div class="span4 plan">
+                        <div class="title">
+                            Provider A
+                        </div>
+                        <div class="price">
+                            $19 USD/month
+                        </div>
+                        <div class="description">
+                            10, 000 messages
+                            <br>
+                            <b>unlimited</b> data
+                            <br>
+                            <b>unlimited</b> users
+                            <br>
+                            first 10 day free
+                        </div>
+                        <a class="btn disabled" href="#">Your Current Plan</a>
+                    </div>
+                    <div class="span4 plan">
+                        <div class="title">
+                            Provider B
+                        </div>
+                        <div class="price">
+                            $19 USD/month
+                        </div>
+                        <div class="description">
+                            10, 000 messages
+                            <br>
+                            <b>unlimited</b> data
+                            <br>
+                            <b>unlimited</b> users
+                            <br>
+                            first 30 day free
+                        </div>
+                        <a class="btn btn-primary" href="#">Change to this Plan</a>
+                        <div class="ribbon">
+                            NEW
+                        </div>
+                    </div>
+                    <div class="span4 plan">
+                        <div class="title">
+                            Provider C
+                        </div>
+                        <div class="price">
+                            $18 USD/month
+                        </div>
+                        <div class="description">
+                            10, 000 messages
+                            <br>
+                            <b>unlimited</b> data
+                            <br>
+                            <b>unlimited</b> users
+                            <br>
+                            first 100 day free
+                        </div>
+                        <a class="btn btn-primary" href="#">Change to this Plan</a>
+                    </div>
+                </div>
+            </div><!--/.container-->
+        </section>
+
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="common-files/js/jquery-1.10.2.min.js"></script>
+        <script src="flat-ui/js/bootstrap.min.js"></script>
+        <script src="common-files/js/jquery.parallax.min.js"></script>
+        <script src="common-files/js/startup-kit.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
